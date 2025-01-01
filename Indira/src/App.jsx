@@ -9,10 +9,13 @@ import EditCustomer from "./Components/EditCustomer";
 import DailyCheck from "./Components/DailyCheck";
 import ViewHistory from "./Components/ViewHistory";
 import DeliveryHistory from "./Components/DeliveryHistory";
+import Navbar from "./Components/NavBar";
 
 const App = () => {
   return (
     <Router>
+        <Navbar />
+        <div className="container mt-4">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -21,10 +24,9 @@ const App = () => {
         <Route path="/EditCustomer" element={<EditCustomer />} />
         <Route path="/DailyCheck" element={<DailyCheck />} />\
         <Route path="/ViewHistory/:customerName" element={<ViewHistory />} />
-        <Route path="/DeliveryHistory" element={<DeliveryHistory />} />
-        
-        
+        <Route path="/DeliveryHistory" element={<DeliveryHistory />} />        
       </Routes>
+      </div>
     </Router>
   );
 };
