@@ -17,7 +17,11 @@ const CustomerList = () => {
         const snapshot = await get(dbRef);
         if (snapshot.exists()) {
           const customersData = snapshot.val();
-          setCustomers(Object.values(customersData));
+          const customersArray = Object.keys(customersData).map(key => ({
+            id: key,
+            ...customersData[key]
+          }));
+          setCustomers(customersArray);
         } else {
           setError("No customers found");
         }

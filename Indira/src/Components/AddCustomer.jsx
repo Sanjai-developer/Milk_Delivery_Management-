@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";  // Import Bootstrap CSS
 
 const AddCustomer = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [milkQuantity, setMilkQuantity] = useState(0); // Default milk quantity
@@ -17,12 +16,12 @@ const AddCustomer = () => {
     const dbRef = ref(database, "customers/" + customerId);
     await set(dbRef, {
       name,
-      email,
       phone,
       address,
       milkQuantity // Adding the milk quantity
     });
     alert("Customer added successfully!");
+    window.location.reload(); // Refresh the page
   };
 
   return (
@@ -38,18 +37,6 @@ const AddCustomer = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter name"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
             required
           />
         </div>
